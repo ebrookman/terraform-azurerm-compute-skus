@@ -12,6 +12,14 @@ module "skus" {
       memory_gb = {
         min = 8
       }
+       disk_count = {
+        min = 1
+      }
+
+      accelerated_networking = {
+        enabled = null
+        //enabled = true
+      }
     }
   }
 
