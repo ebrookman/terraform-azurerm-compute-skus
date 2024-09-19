@@ -80,7 +80,9 @@ locals {
     for sku in local.all_vm_skus : sku
     if(
       (sku.resources.vcpus >= var.vm_filter.resources.vcpu.min && sku.resources.vcpus <= var.vm_filter.resources.vcpu.max) &&
-      (sku.resources.memory_gb >= var.vm_filter.resources.memory_gb.min && sku.resources.memory_gb <= var.vm_filter.resources.memory_gb.max)
+      (sku.resources.memory_gb >= var.vm_filter.resources.memory_gb.min && sku.resources.memory_gb <= var.vm_filter.resources.memory_gb.max) &&
+      (sku.resources.max_disk_count >= var.vm_filter.resources.disk_count.min && sku.resources.disk_count.max) &&
+      (sku.features.accelerated_networking == var.vm_filter.accelerated_networking.enabled)
     )
   ]
 }

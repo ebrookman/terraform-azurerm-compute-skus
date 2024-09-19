@@ -15,6 +15,13 @@ variable "vm_filter" {
         min = optional(number, 0)
         max = optional(number, 999999)
       })
+      disk_count = object({
+        min = optional(number, 0)
+        max = optional(number, 64)
+      })
+      accelerated_networking = object({
+        enabled = optional(bool, null)
+      })
     })
   })
   default = {
@@ -27,6 +34,11 @@ variable "vm_filter" {
         min = 0
         max = 999999
       }
+      disk_count = {
+        min = 0
+        max = 64
+      }
+      accelerated_networking = null
     }
   }
   description = <<DESCRIPTION
